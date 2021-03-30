@@ -48,6 +48,17 @@ class QueueTest
 
   @Test
   public void nullArgumentResultsInIllegalArgumentException() {
+    // act & assert
     assertThrows(IllegalArgumentException.class, () -> q.enqueue(null));
   }
+
+  @Test
+  public void fullQueueResultsInIllegalStateException() {
+    q.enqueue("A");
+    q.enqueue("B");
+    q.enqueue("C");
+    q.enqueue("D");
+    q.enqueue("E");
+    assertThrows(IllegalStateException.class, ()-> q.enqueue("X"));
+}
 }
