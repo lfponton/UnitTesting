@@ -45,4 +45,9 @@ class QueueTest
     // assert
     assertEquals(4, q.size());
   }
+
+  @Test
+  public void nullArgumentResultsInIllegalArgumentException() {
+    assertThrows(IllegalArgumentException.class, () -> q.enqueue(null));
+  }
 }

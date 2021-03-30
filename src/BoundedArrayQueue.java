@@ -16,6 +16,9 @@ public class BoundedArrayQueue<T> implements QueueADT<T> {
 		if(count == cap) {
 			throw new IllegalStateException("Queue is full");
 		}
+		if (element == null) {
+			throw new IllegalArgumentException("Null is not a valid argument");
+		}
 
 		q[(front + count) % cap] = element;
 		count++;
