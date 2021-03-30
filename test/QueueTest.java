@@ -61,4 +61,17 @@ class QueueTest
     q.enqueue("E");
     assertThrows(IllegalStateException.class, ()-> q.enqueue("X"));
 }
+
+@Test void illegalStateExceptionFailedManually() {
+  q.enqueue("A");
+  q.enqueue("B");
+  q.enqueue("C");
+  q.enqueue("D");
+  q.enqueue("E");
+  try {
+    q.enqueue("X");
+    fail("Should not be able to enqueue 6th element");
+  } catch (IllegalStateException e)
+  {}
+}
 }
